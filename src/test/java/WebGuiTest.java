@@ -105,6 +105,7 @@ public class WebGuiTest {
     @Test
     //Verify the edit functionality 
     public void test5() throws Exception {
+        WebElement btn_save = driver.findElement(By.id("save"));
         WebElement e = driver.findElement(By.tagName("tbody"));
         List<WebElement> rows = e.findElements(By.tagName("tr"));
 
@@ -118,8 +119,13 @@ public class WebGuiTest {
                 WebElement action_edit = actions.get(0);
                 action_edit.click();
 
-                WebElement id_input = driver.findElement(By.id("id"));
-                Assert.assertThat(id_input.getAttribute("value"), is("938"));
+                WebElement input_description = driver.findElement(By.id("description"));
+                input_description.clear();
+                input_description.sendKeys("Cool car");
+                
+                btn_save.click();
+                
+                Assert.assertThat(columns.get(5).getText(), is("Cool car"));
             }
         });
     }
@@ -149,12 +155,12 @@ public class WebGuiTest {
 
         btn_newCar.click();
 
-        driver.findElement(By.id("year")).sendKeys("2017");
-        driver.findElement(By.id("registered")).sendKeys("2017-1-2");
-        driver.findElement(By.id("make")).sendKeys("Mercedes Benz");
-        driver.findElement(By.id("model")).sendKeys("AMG C 63 S Coupe");
-        driver.findElement(By.id("description")).sendKeys("Kims dyt");
-        driver.findElement(By.id("price")).sendKeys("1603200");
+        driver.findElement(By.id("year")).sendKeys("2008");
+        driver.findElement(By.id("registered")).sendKeys("2002-5-5");
+        driver.findElement(By.id("make")).sendKeys("Kia");
+        driver.findElement(By.id("model")).sendKeys("Rio");
+        driver.findElement(By.id("description")).sendKeys("As new");
+        driver.findElement(By.id("price")).sendKeys("31000");
 
         btn_saveCar.click();
 
