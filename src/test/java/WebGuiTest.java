@@ -119,7 +119,6 @@ public class WebGuiTest {
                 action_edit.click();
 
                 WebElement id_input = driver.findElement(By.id("id"));
-                System.out.println(id_input.getAttribute("value"));
                 Assert.assertThat(id_input.getAttribute("value"), is("938"));
             }
         });
@@ -147,12 +146,11 @@ public class WebGuiTest {
     public void test7() throws Exception {
         WebElement btn_newCar = driver.findElement(By.id("new"));
         WebElement btn_saveCar = driver.findElement(By.id("save"));
-        WebElement txt_err = driver.findElement(By.id("submiterr"));
 
         btn_newCar.click();
 
         driver.findElement(By.id("year")).sendKeys("2017");
-        driver.findElement(By.id("registered")).sendKeys("2017");
+        driver.findElement(By.id("registered")).sendKeys("2017-1-2");
         driver.findElement(By.id("make")).sendKeys("Mercedes Benz");
         driver.findElement(By.id("model")).sendKeys("AMG C 63 S Coupe");
         driver.findElement(By.id("description")).sendKeys("Kims dyt");
